@@ -1,0 +1,11 @@
+{
+  "applications": {
+    "StudentMatch": {
+      "parseAppId": "FeAIm23Ei1ETHqDF2tHKRy8JLUfoeHHtMeqorFzm",
+      "herokuAppId": "eb36c552-10b8-417e-a8f7-a90ced1484a1"
+    },
+    "_default": {
+      "link": "StudentMatch"
+    }
+  }
+}
