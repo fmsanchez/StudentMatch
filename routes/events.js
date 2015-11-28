@@ -1,6 +1,7 @@
 var models  = require('../models');
 var express = require('express');
 var router = express.Router();
+var Parse = require('parse/node');
 
 /* GET events. */
 
@@ -63,18 +64,22 @@ router.post('/create', function(req, res, next) {
   var endDay = req.body.endDate;
   var endTime = req.body.endTime;
   var endDate = endDay + ' ' + endTime;
-  console.log(startDate);
-  console.log(endDate);
+  var Event = Parse.Object.extend('event');
+  var evnt = new Event();
 
-  var evnt = Parse.Object.extend('event');
-  evnt.set('event_capacity', req.body.eventCapacity);
+  console.log(req.body.eventCapacity)
+  evnt.set("event_capacity", req.body.eventCapacity);
+  console.log(evnt);
   evnt.set('event_category_name', req.body.eventCategory);
+  console.log(evnt);
   evnt.save(null, {
     success: function(evnt) {
-      alert("Event created successfully");
-    }
-    alert: function(evnt, error) {
-      alert("Error creating event");
+      console.log("Event created successfully");
+      res.end('ok');
+    },
+    error: function(evnt, error) {
+      console.log("Error creating event");
+      res.end('nok');
     }
   });
 

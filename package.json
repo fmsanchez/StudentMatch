@@ -15,6 +15,8 @@
     "jquery": "^2.1.4",
     "jquery-mobile": "^1.4.1",
     "morgan": "~1.6.1",
+    "parse": "^1.6.9",
+    "parse-cloud-express": "^1.1.0",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.13.0",
