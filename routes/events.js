@@ -66,22 +66,35 @@ router.post('/create', function(req, res, next) {
   console.log(startDate);
   console.log(endDate);
 
-  models.Event.create({
-    name: req.body.eventName,
-    description: req.body.eventDescription,
-    category: req.body.eventCategory,
-    location: req.body.eventLocation,
-    geolocation: req.body.eventGeoLocation,
-    capacity: req.body.eventCapacity,
-    startdate: startDate,
-    created_by: 2,
-    enddate: endDate
-  }).then(function(entry) {
-    entry.save();
-    var json = JSON.stringify(entry);
-    res.set('Content-Type', 'application/json');
-    res.end(json);
+  var evnt = Parse.Object.extend('event');
+  evnt.set('event_capacity', req.body.eventCapacity);
+  evnt.set('event_category_name', req.body.eventCategory);
+  evnt.save(null, {
+    success: function(evnt) {
+      alert("Event created successfully");
+    }
+    alert: function(evnt, error) {
+      alert("Error creating event");
+    }
   });
+
+
+  // models.Event.create({
+  //   name: req.body.eventName,
+  //   description: req.body.eventDescription,
+  //   category: req.body.eventCategory,
+  //   location: req.body.eventLocation,
+  //   geolocation: req.body.eventGeoLocation,
+  //   capacity: req.body.eventCapacity,
+  //   startdate: startDate,
+  //   created_by: 2,
+  //   enddate: endDate
+  // }).then(function(entry) {
+  //   entry.save();
+  //   var json = JSON.stringify(entry);
+  //   res.set('Content-Type', 'application/json');
+  //   res.end(json);
+  // });
 })
 
 module.exports = router;
