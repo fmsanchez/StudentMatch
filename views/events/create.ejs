@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Match</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../stylesheets/style.css" type="text/css" />
+	<script type="text/javascript" src="../../javascripts/jquery-11.0.0.min.js"></script>
+	<script type="text/javascript" src="../../javascripts/create-event.js"> </script>
+</head>
+
+<body>
+	<div class="home-header">
+		<div class="header-row">
+			<span id="page-title">New Event</span>
+		</div>
+	</div>
+	<div class="create-form">
+		<input id="event-name-input" type="text" placeholder="Event name"/>
+		<input id="event-location-input" type="text" placeholder="Location"/>
+		<select id="category-select">
+			<option disabled selected>Select Category</option>
+			<option value="food">Food</option>
+			<option value="fun">Fun</option>
+			<option value="exercise">Exercise</option>
+		</select>
+		<span>Description</span>
+		<textarea id="description-input" rows="2" cols="50"></textarea>
+		<span>Start</span>
+		<input id="start-date-input" type="date"/>
+		<input id="start-time-input" type="time"/>
+		<span>End</span>
+		<input id="end-date-input" type="date"/>
+		<input id="end-time-input" type="time"/>
+		<span>Capacity</span>
+		<input id="capacity-input" type="number" min="1" max="999" />
+		<div class="big-button" id="create-event-submit">
+			Create Event
+		</div>
+	</div>
+</body>
+</html>
