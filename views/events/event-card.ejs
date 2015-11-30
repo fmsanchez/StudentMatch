@@ -1,32 +1,32 @@
-<div class="event-card" data-id="<%= event.id %>">
-	<span class='event-title'><%= event.name %></span>
-	<div class='event-sub-info'>
-		<ul>
-			<li><%= event.location %></li>
-			<% var monthMap = {0: 'January', 1: 'February', 2: 'March', 3: 'April', 4: 'May', 5: 'June', 6: 'July', 7: 'August', 8: 'September', 9: 'October', 10: 'November', 11: 'December'} %>
-			<% var date = new Date(event.startdate) %>
-			<li><%= monthMap[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()  %></li>
-			<% var hour = date.getHours() %>
-			<% var meridian = 'AM' %>
-			<% if (hour / 12 >= 1) { %>
-				<% hour = hour - 12 %>
-				<% meridian = 'PM' %>
-			<% } %>
-			<% if (hour == 0) { %>
-				<% hour = 12 %>
-			<% } %>
-			<% var extra = '' %>
-			<% if (date.getMinutes() < 10) { %>
-				<% extra = '0' %>
-			<% } %>
-			<li><%= hour.toString() + ':' + extra +date.getMinutes() + ' ' + meridian %></li>
-			<% if (event.attending != 1) { %>
-			<li><%= event.attending %> people attending</li>
-			<% } else { %>
-			<li><%= event.attending %> person attending</li>
-			<% } %>
+<div class="event-card" data-id="<%= event.objectId %>">
+    <span class='event-title'><%= event.event_name %></span>
+    <div class='event-sub-info'>
+        <ul>
+            <% var monthMap = {0: 'January', 1: 'February', 2: 'March', 3: 'April', 4: 'May', 5: 'June', 6: 'July', 7: 'August', 8: 'September', 9: 'October', 10: 'November', 11: 'December'} %>
+            <% var date = new Date(event.event_date) %>
+            <li><%= monthMap[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()  %></li>
+            <% var hour = parseInt(event.event_start_time.split(':')[0]) %>
+            <% var minute = parseInt(event.event_start_time.split(':')[1]) %>
+            <% var meridian = 'AM' %>
+            <% if (hour / 12 >= 1) { %>
+                <% hour = hour - 12 %>
+                <% meridian = 'PM' %>
+            <% } %>
+            <% if (hour == 0) { %>
+                <% hour = 12 %>
+            <% } %>
+            <% var extra = '' %>
+            <% if (minute < 10) { %>
+                <% extra = '0' %>
+            <% } %>
+            <li><%= hour.toString()+':'+extra+minute.toString()+' '+meridian %></li>
+<!--            <% if (event.attending != 1) { %>
+            <li><%= event.attending %> people attending</li>
+            <% } else { %>
+            <li><%= event.attending %> person attending</li>
+            <% } %> -->
 
-		</ul>
-	</div>
-	<span>Created by Francisco Sanchez</span>
+        </ul>
+    </div>
+<!--    <span>Created by <%= event.event_creator %></span> -->
 </div>

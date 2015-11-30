@@ -21,7 +21,7 @@
 				<div class="header-button">
 					<span>Profile</span>
 				</div>
-				<div class="header-button selected-button">
+				<div class="header-button selected-button" id="events-button">
 					<span>Events</span>
 				</div>
 				<div class="header-button" id="attending-button">
@@ -30,8 +30,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="home-tab">
+	<div class="home-tab" id="events-tab">
 		<% events.forEach(function(event) { %>
+			<% include ../events/event-card.ejs %>
+		<% }) %>
+	</div>
+	<div class="home-tab" id="attending-tab" style="display: none;">
+		<% attending.forEach(function(event) { %>
 			<% include ../events/event-card.ejs %>
 		<% }) %>
 	</div>
