@@ -92,9 +92,9 @@ router.post('/attend/', function(req, res, next) {
     },
     function(error0, response0, body0) {
       if (error0) {
-        res.end(error0.toString());
+        res.end('Error');
       } else {
-        res.end(body0.toString());
+        res.end('Success');
       }
     }
   );
@@ -174,9 +174,9 @@ router.post('/create', function(req, res, next) {
     },
     function(error, response, body) {
       if (error) {
-        res.end(error);
+        res.end('Error');
       } else {
-        res.end(body);
+        res.end('Success');
       }
     }
   );

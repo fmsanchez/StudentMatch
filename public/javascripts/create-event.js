@@ -15,11 +15,13 @@ var ready = function() {
 
     	$.post('/events/create', EVENT_TO_CREATE, function(data) {
     		console.log(data)
-    		console.log(data["id"]);
-    		if (data['id']) {
+    		console.log();
+    		if (data=='Success') {
     			console.log('redirecting');
     			window.location.href = '/home';
-    		}
+    		} else {
+                console.log('Error creating event');
+            }
     	});
 
     });
