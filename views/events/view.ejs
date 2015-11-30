@@ -55,6 +55,9 @@
 		<textarea readonly id="event-description" rows="4" cols="50"><%= even.description %></textarea>
 		<span id="event-capacity">Capacity: <%= even.event_capacity %></span>
 		<span id="event-attending">Attending: <%= even.attending %></span>
+		<% attendees.forEach(function(user) { %>
+			<span class="attendee"><%= user.username %></span>
+		<% }) %>
 		<div class="big-button" id="event-attend-button">Attend</div>
 
 	</div>

@@ -135,7 +135,27 @@ router.get('/:id', function(req, res, next) {
           error: {}
         });
       } else {
-        res.render('events/view', { even: body });
+        request.get(
+          {
+            url: 'https://api.parse.com/1/classes/_User?where=' + '{"$relatedTo":{"object":{"__type":"Pointer","className":"event","objectId":"MawKBZmsnO"},"key":"attendees"}}',
+            method: 'GET',
+            json: true,
+            headers: {
+              'X-Parse-Application-Id': 'FeAIm23Ei1ETHqDF2tHKRy8JLUfoeHHtMeqorFzm',
+              'X-Parse-REST-API-Key': 'd1ND35gvYaS8qrmxBysx5Hm2fPXcKxKbOTZG8RwN'
+            }
+          },
+          function(error0, response0, body0) {
+            if (error0) {
+              res.render('error', {
+                message: 'Event not found',
+                error: {}
+              });
+            } else {
+              res.render('events/view', { even: body, attendees: body0['results'] });
+            }
+          }
+        );
       }
     }
   );
