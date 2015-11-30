@@ -52,9 +52,9 @@
 			<% endextra = '0' %>
 		<% } %>
 		<span id="event-time"><%= hour.toString() + ':' + extra +date.getMinutes() + ' ' + meridian %> - <%= endhour.toString() + ':' + endextra + endminute + ' ' + endmeridian %></span>
-		<textarea readonly id="event-description" rows="4" cols="50"><%= even.description %></textarea>
+		<textarea readonly id="event-description" rows="4" cols="50"><%= even.event_description %></textarea>
 		<span id="event-capacity">Capacity: <%= even.event_capacity %></span>
-		<span id="event-attending">Attending: <%= even.attending %></span>
+		<span id="event-attending">Attendees (<%= attendees.length %>)</span>
 		<% attendees.forEach(function(user) { %>
 			<span class="attendee"><%= user.username %></span>
 		<% }) %>
