@@ -118,6 +118,7 @@ router.post('/attend/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
+  var event_id = req.params['id'];
   request.get(
     {
       url: 'https://api.parse.com/1/classes/event/' + req.params['id'],
@@ -137,7 +138,7 @@ router.get('/:id', function(req, res, next) {
       } else {
         request.get(
           {
-            url: 'https://api.parse.com/1/classes/_User?where=' + '{"$relatedTo":{"object":{"__type":"Pointer","className":"event","objectId":"MawKBZmsnO"},"key":"attendees"}}',
+            url: 'https://api.parse.com/1/classes/_User?where=' + '{"$relatedTo":{"object":{"__type":"Pointer","className":"event","objectId":"' + event_id + '"},"key":"attendees"}}',
             method: 'GET',
             json: true,
             headers: {
